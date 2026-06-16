@@ -1,0 +1,13 @@
+{
+  "itemGroup.valorant": "Example Mod Tab",
+  "block.valorant.example_block": "Example Block",
+  "item.valorant.example_item": "Example Item",
+
+  "valorant.configuration.title": "Valorant Configs",
+  "valorant.configuration.section.valorant.common.toml": "Valorant Configs",
+  "valorant.configuration.section.valorant.common.toml.title": "Valorant Configs",
+  "valorant.configuration.items": "Item List",
+  "valorant.configuration.logDirtBlock": "Log Dirt Block",
+  "valorant.configuration.magicNumberIntroduction": "Magic Number Text",
+  "valorant.configuration.magicNumber": "Magic Number"
+}
