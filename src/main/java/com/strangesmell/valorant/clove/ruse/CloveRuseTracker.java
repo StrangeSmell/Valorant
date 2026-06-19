@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.ruse;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class CloveRuseTracker {
     private static final double MAX_RANGE = 64.0D;
     private static final long WINDUP = 20L;
@@ -47,7 +47,7 @@ public final class CloveRuseTracker {
             }
             int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, BlockPos.containing(smoke.x, 0.0D, smoke.z)) + 1;
             level.addFreshEntity(new CloveRuseSmokeEntity(level, smoke.x, y, smoke.z, smoke.lifeTime));
-            level.playSound(null, smoke.x, y, smoke.z, VALORANT.CLOVE_RUSE_RELEASE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, smoke.x, y, smoke.z, Valorant.CLOVE_RUSE_RELEASE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             iterator.remove();
         }
     }

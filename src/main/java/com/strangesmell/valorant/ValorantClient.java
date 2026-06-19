@@ -3,7 +3,6 @@ package com.strangesmell.valorant;
 import com.strangesmell.valorant.clove.ruse.CloveRuseScreen;
 import com.strangesmell.valorant.jett.bladestorm.JettBladeStormPrimaryFirePayload;
 import com.strangesmell.valorant.jett.bladestorm.JettBladeStormSecondaryFirePayload;
-import com.strangesmell.valorant.jett.tailwind.JettTailwindDashPayload;
 import com.strangesmell.valorant.leizhi.bomb.BombEntity;
 import com.strangesmell.valorant.leizhi.bomb.SmellBombEntity;
 import com.strangesmell.valorant.leizhi.blastpack.BlastPackEntity;
@@ -18,7 +17,6 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.ChatFormatting;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -37,8 +35,8 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import java.util.HashSet;
 import java.util.Set;
 
-@EventBusSubscriber(modid = VALORANT.MODID, value = Dist.CLIENT)
-public class VALORANTClient {
+@EventBusSubscriber(modid = Valorant.MODID, value = Dist.CLIENT)
+public class ValorantClient {
     private static final KeyMapping.Category VALORANT_CATEGORY = new KeyMapping.Category(Identifier.withDefaultNamespace("key.categories.valorant"));
     public static final KeyMapping SKILL_BAR_KEY = new KeyMapping("key.valorant.skill_bar", InputConstants.Type.KEYSYM, InputConstants.KEY_G, VALORANT_CATEGORY);
     public static final KeyMapping SKILL_SLOT_1_KEY = new KeyMapping("key.valorant.skill_slot_1", InputConstants.Type.KEYSYM, InputConstants.KEY_Z, VALORANT_CATEGORY);
@@ -76,13 +74,13 @@ public class VALORANTClient {
         for (Entity entity : minecraft.level.entitiesForRendering()) {
             SoundEvent loopSound = null;
             if (entity instanceof BombEntity || entity instanceof SmellBombEntity) {
-                loopSound = VALORANT.LEIZHI_PAINT_SHELLS_LOOP.get();
+                loopSound = Valorant.LEIZHI_PAINT_SHELLS_LOOP.get();
             } else if (entity instanceof BoomBotEntity) {
-                loopSound = VALORANT.LEIZHI_BOOM_BOT_LOOP.get();
+                loopSound = Valorant.LEIZHI_BOOM_BOT_LOOP.get();
             } else if (entity instanceof BlastPackEntity) {
-                loopSound = VALORANT.LEIZHI_BLAST_PACK_LOOP.get();
+                loopSound = Valorant.LEIZHI_BLAST_PACK_LOOP.get();
             } else if (entity instanceof PhoenixBlazeWallEntity) {
-                loopSound = VALORANT.PHOENIX_BLAZE_LOOP.get();
+                loopSound = Valorant.PHOENIX_BLAZE_LOOP.get();
             }
 
             if (loopSound != null && LOOPING_ENTITY_SOUNDS.add(entity.getId())) {
@@ -158,7 +156,7 @@ public class VALORANTClient {
         // Sage Barrier mouse follow-up (still needs skillbar slot)
         if (activeMouseSkillSlot >= 0) {
             Identifier itemId = ValorantSkillBar.get(activeMouseSkillSlot);
-            if (itemId != null && itemId.equals(itemId(VALORANT.SAGE_BARRIER_ITEM.get()))) {
+            if (itemId != null && itemId.equals(itemId(Valorant.SAGE_BARRIER_ITEM.get()))) {
                 if (primary && sageBarrierPending) {
                     ValorantNetwork.sendToServer(new com.strangesmell.valorant.sage.barrier.SageBarrierModePayload(sageBarrierRotated));
                     sageBarrierPending = false;
@@ -177,13 +175,13 @@ public class VALORANTClient {
         if (down && !SKILL_KEY_DOWN[slot]) {
             if (itemId != null) {
                 ValorantNetwork.sendToServer(new ValorantSkillUsePayload(itemId, ValorantSkillUsePayload.Action.PRESS));
-                if (itemId.equals(itemId(VALORANT.CLOVE_RUSE_ITEM.get()))) {
+                if (itemId.equals(itemId(Valorant.CLOVE_RUSE_ITEM.get()))) {
                     CloveRuseScreen.openRuseScreen();
                 }
-                if (itemId.equals(itemId(VALORANT.JETT_TAILWIND_ITEM.get()))) {
+                if (itemId.equals(itemId(Valorant.JETT_TAILWIND_ITEM.get()))) {
                     tailwindReadyTicks = 150;
                 }
-                if (itemId.equals(itemId(VALORANT.SAGE_BARRIER_ITEM.get()))) {
+                if (itemId.equals(itemId(Valorant.SAGE_BARRIER_ITEM.get()))) {
                     if (sageBarrierPending) {
                         sageBarrierRotated = !sageBarrierRotated;
                     } else {
@@ -193,7 +191,7 @@ public class VALORANTClient {
                 }
                 if (isMouseFollowupSkill(itemId)) {
                     activeMouseSkillSlot = slot;
-                    if (itemId.equals(itemId(VALORANT.JETT_BLADE_STORM_ITEM.get()))) {
+                    if (itemId.equals(itemId(Valorant.JETT_BLADE_STORM_ITEM.get()))) {
                         bladeStormShotsRemaining = 5;
                     }
                 }
@@ -240,8 +238,8 @@ public class VALORANTClient {
     }
 
     private static boolean isMouseFollowupSkill(Identifier itemId) {
-        return itemId != null && (itemId.equals(itemId(VALORANT.SAGE_BARRIER_ITEM.get()))
-                || itemId.equals(itemId(VALORANT.JETT_BLADE_STORM_ITEM.get())));
+        return itemId != null && (itemId.equals(itemId(Valorant.SAGE_BARRIER_ITEM.get()))
+                || itemId.equals(itemId(Valorant.JETT_BLADE_STORM_ITEM.get())));
     }
 
     private static Identifier itemId(Item item) {

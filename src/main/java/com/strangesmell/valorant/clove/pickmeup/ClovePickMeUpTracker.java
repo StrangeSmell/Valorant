@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.pickmeup;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.Identifier;
@@ -22,12 +22,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class ClovePickMeUpTracker {
     private static final long WINDOW = 200L;
     private static final long BUFF_TIME = 200L;
     private static final float MAX_OVERHEAL = 10.0F;
-    private static final Identifier SPEED_MODIFIER = Identifier.fromNamespaceAndPath(VALORANT.MODID, "clove_pick_me_up_speed");
+    private static final Identifier SPEED_MODIFIER = Identifier.fromNamespaceAndPath(Valorant.MODID, "clove_pick_me_up_speed");
     private static final Map<UUID, Long> ARMED = new HashMap<>();
     private static final Map<UUID, UUID> RECENT_DAMAGE = new HashMap<>();
     private static final Map<UUID, Long> BUFFED = new HashMap<>();
@@ -96,7 +96,7 @@ public final class ClovePickMeUpTracker {
             speed.addOrUpdateTransientModifier(new AttributeModifier(SPEED_MODIFIER, 0.15D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
         BUFFED.put(player.getUUID(), level.getGameTime() + BUFF_TIME);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.CLOVE_PICK_ME_UP_PROC.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.CLOVE_PICK_ME_UP_PROC.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         level.sendParticles(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFB477FF), player.getX(), player.getY() + 1.0D, player.getZ(), 48, 0.7D, 0.9D, 0.7D, 0.04D);
     }
 

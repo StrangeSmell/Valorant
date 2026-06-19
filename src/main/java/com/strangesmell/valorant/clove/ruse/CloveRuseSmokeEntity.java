@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.ruse;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -29,7 +29,7 @@ public class CloveRuseSmokeEntity extends Entity {
     }
 
     public CloveRuseSmokeEntity(Level level, double x, double y, double z, int lifeTime) {
-        this(VALORANT.CLOVE_RUSE_SMOKE.get(), level);
+        this(Valorant.CLOVE_RUSE_SMOKE.get(), level);
         this.setPos(x, y, z);
         this.entityData.set(DATA_LIFE_TIME, lifeTime);
     }
@@ -48,7 +48,7 @@ public class CloveRuseSmokeEntity extends Entity {
                 double px = this.getX() + x * shell;
                 double py = this.getY() + 1.1D + y * RADIUS * 0.85D;
                 double pz = this.getZ() + z * shell;
-                serverLevel.sendParticles(VALORANT.CLOVE_RUSE_SMOKE_PARTICLE.get(), px, py, pz, 1, x * 0.015D, y * 0.008D, z * 0.015D, 0.0D);
+                serverLevel.sendParticles(Valorant.CLOVE_RUSE_SMOKE_PARTICLE.get(), px, py, pz, 1, x * 0.015D, y * 0.008D, z * 0.015D, 0.0D);
             }
         }
         if (!this.level().isClientSide() && this.tickCount > this.entityData.get(DATA_LIFE_TIME)) {

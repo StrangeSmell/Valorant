@@ -1,6 +1,5 @@
 package com.strangesmell.valorant;
 
-import com.mojang.authlib.GameProfile;
 import com.strangesmell.valorant.clove.meddle.CloveMeddleEntity;
 import com.strangesmell.valorant.clove.meddle.CloveMeddleItem;
 import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetItem;
@@ -9,7 +8,6 @@ import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetPayload;
 import com.strangesmell.valorant.clove.pickmeup.ClovePickMeUpItem;
 import com.strangesmell.valorant.clove.ruse.CloveRuseItem;
 import com.strangesmell.valorant.clove.ruse.CloveRusePayload;
-import com.strangesmell.valorant.clove.ruse.CloveRuseSmokeParticle;
 import com.strangesmell.valorant.clove.ruse.CloveRuseSmokeEntity;
 import com.strangesmell.valorant.clove.ruse.CloveRuseTracker;
 import com.strangesmell.valorant.jett.bladestorm.JettBladeStormItem;
@@ -49,35 +47,22 @@ import com.strangesmell.valorant.phoenix.hothands.PhoenixHotHandsItem;
 import com.strangesmell.valorant.phoenix.hothands.PhoenixHotHandsZoneEntity;
 import com.strangesmell.valorant.phoenix.runitback.PhoenixRunItBackAnchorEntity;
 import com.strangesmell.valorant.phoenix.runitback.PhoenixRunItBackItem;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -88,7 +73,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -98,8 +82,8 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(VALORANT.MODID)
-public class VALORANT {
+@Mod(Valorant.MODID)
+public class Valorant {
 
     public static Map<BlockPos, Integer> TimePos = new HashMap<>();
 
@@ -177,7 +161,7 @@ public class VALORANT {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public static final DeferredRegister.Entities ENTITY_TYPES =
-            DeferredRegister.createEntities(VALORANT.MODID);
+            DeferredRegister.createEntities(Valorant.MODID);
 
     public static final Supplier<EntityType<BombEntity>> LEIZHIBOMB = ENTITY_TYPES.register("leizhibomb",
             () -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC)
@@ -334,7 +318,7 @@ public class VALORANT {
             }).build());
 
 
-    public VALORANT(IEventBus modEventBus, ModContainer modContainer) {
+    public Valorant(IEventBus modEventBus, ModContainer modContainer) {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerPayloads);

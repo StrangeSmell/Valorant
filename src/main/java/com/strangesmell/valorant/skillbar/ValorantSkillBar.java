@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.skillbar;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,26 +20,26 @@ public final class ValorantSkillBar {
 
     public static void refreshSkillItems() {
         SKILL_ITEMS.clear();
-        addSkill(VALORANT.LEIZHIBOMB_ITEM.get());
-        addSkill(VALORANT.BIGBOMB_ITEM.get());
-        addSkill(VALORANT.BOOMBOT_ITEM.get());
-        addSkill(VALORANT.BLASTPACK_ITEM.get());
-        addSkill(VALORANT.SAGE_HEAL_ITEM.get());
-        addSkill(VALORANT.SAGE_BARRIER_ITEM.get());
-        addSkill(VALORANT.SAGE_SLOW_ITEM.get());
-        addSkill(VALORANT.SAGE_RESURRECTION_ITEM.get());
-        addSkill(VALORANT.PHOENIX_CURVEBALL_ITEM.get());
-        addSkill(VALORANT.PHOENIX_HOT_HANDS_ITEM.get());
-        addSkill(VALORANT.PHOENIX_BLAZE_ITEM.get());
-        addSkill(VALORANT.PHOENIX_RUN_IT_BACK_ITEM.get());
-        addSkill(VALORANT.CLOVE_RUSE_ITEM.get());
-        addSkill(VALORANT.CLOVE_MEDDLE_ITEM.get());
-        addSkill(VALORANT.CLOVE_PICK_ME_UP_ITEM.get());
-        addSkill(VALORANT.CLOVE_NOT_DEAD_YET_ITEM.get());
-        addSkill(VALORANT.JETT_CLOUDBURST_ITEM.get());
-        addSkill(VALORANT.JETT_UPDRAFT_ITEM.get());
-        addSkill(VALORANT.JETT_TAILWIND_ITEM.get());
-        addSkill(VALORANT.JETT_BLADE_STORM_ITEM.get());
+        addSkill(Valorant.LEIZHIBOMB_ITEM.get());
+        addSkill(Valorant.BIGBOMB_ITEM.get());
+        addSkill(Valorant.BOOMBOT_ITEM.get());
+        addSkill(Valorant.BLASTPACK_ITEM.get());
+        addSkill(Valorant.SAGE_HEAL_ITEM.get());
+        addSkill(Valorant.SAGE_BARRIER_ITEM.get());
+        addSkill(Valorant.SAGE_SLOW_ITEM.get());
+        addSkill(Valorant.SAGE_RESURRECTION_ITEM.get());
+        addSkill(Valorant.PHOENIX_CURVEBALL_ITEM.get());
+        addSkill(Valorant.PHOENIX_HOT_HANDS_ITEM.get());
+        addSkill(Valorant.PHOENIX_BLAZE_ITEM.get());
+        addSkill(Valorant.PHOENIX_RUN_IT_BACK_ITEM.get());
+        addSkill(Valorant.CLOVE_RUSE_ITEM.get());
+        addSkill(Valorant.CLOVE_MEDDLE_ITEM.get());
+        addSkill(Valorant.CLOVE_PICK_ME_UP_ITEM.get());
+        addSkill(Valorant.CLOVE_NOT_DEAD_YET_ITEM.get());
+        addSkill(Valorant.JETT_CLOUDBURST_ITEM.get());
+        addSkill(Valorant.JETT_UPDRAFT_ITEM.get());
+        addSkill(Valorant.JETT_TAILWIND_ITEM.get());
+        addSkill(Valorant.JETT_BLADE_STORM_ITEM.get());
     }
 
     public static boolean isSkillItem(ItemStack stack) {

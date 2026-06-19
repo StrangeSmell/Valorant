@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.pickmeup;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -24,7 +24,7 @@ public class ClovePickMeUpItem extends Item {
             ClovePickMeUpTracker.arm(serverLevel, player);
         }
         itemStack.consume(1, player);
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.CLOVE_PICK_ME_UP_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.CLOVE_PICK_ME_UP_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;
     }

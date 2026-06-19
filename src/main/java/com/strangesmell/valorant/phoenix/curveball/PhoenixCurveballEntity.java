@@ -1,13 +1,12 @@
 package com.strangesmell.valorant.phoenix.curveball;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.server.level.ServerPlayer;
@@ -34,11 +33,11 @@ public class PhoenixCurveballEntity extends ThrowableItemProjectile {
     }
 
     public PhoenixCurveballEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.PHOENIX_CURVEBALL.get(), owner, level, item);
+        super(Valorant.PHOENIX_CURVEBALL.get(), owner, level, item);
     }
 
     public PhoenixCurveballEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.PHOENIX_CURVEBALL.get(), x, y, z, level, item);
+        super(Valorant.PHOENIX_CURVEBALL.get(), x, y, z, level, item);
     }
 
     @Override
@@ -100,7 +99,7 @@ public class PhoenixCurveballEntity extends ThrowableItemProjectile {
                     target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, BLIND_TIME, 1));
                 }
             }
-            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.PHOENIX_CURVEBALL_EXPLODE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.PHOENIX_CURVEBALL_EXPLODE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             serverLevel.sendParticles(ColorParticleOption.create(ParticleTypes.FLASH, 0xFFFFC04D), this.getX(), this.getY(), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }
         ((Player)this.getOwner()).getUseItem().consume(1, (Player)this.getOwner());

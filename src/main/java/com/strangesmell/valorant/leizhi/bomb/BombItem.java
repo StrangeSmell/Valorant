@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.bomb;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.server.level.ServerLevel;
@@ -10,7 +10,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
@@ -23,7 +22,7 @@ public class BombItem extends Item implements ProjectileItem {
 
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.LEIZHI_PAINT_SHELLS_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.LEIZHI_PAINT_SHELLS_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
         if (level instanceof ServerLevel serverLevel) {
 

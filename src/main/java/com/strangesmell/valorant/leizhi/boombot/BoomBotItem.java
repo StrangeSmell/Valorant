@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.boombot;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -20,7 +20,7 @@ public class BoomBotItem extends Item {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(player, player.getX(), player.getY(), player.getZ(), VALORANT.LEIZHI_BOOM_BOT_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+        level.playSound(player, player.getX(), player.getY(), player.getZ(), Valorant.LEIZHI_BOOM_BOT_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
         if (level instanceof ServerLevel serverLevel) {
             Vec3 look = player.getLookAngle();

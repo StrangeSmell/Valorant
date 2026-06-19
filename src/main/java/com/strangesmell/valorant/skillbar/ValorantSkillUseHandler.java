@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.skillbar;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import com.strangesmell.valorant.leizhi.blastpack.BlastPackItem;
 import com.strangesmell.valorant.jett.bladestorm.JettBladeStormTracker;
 import com.strangesmell.valorant.jett.cloudburst.JettCloudburstEntity;
@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class ValorantSkillUseHandler {
     private static final Set<Identifier> SKILL_ITEMS = new HashSet<>();
     private static final Map<UUID, HeldSkill> HELD = new HashMap<>();
@@ -36,26 +36,26 @@ public final class ValorantSkillUseHandler {
 
     public static void refreshSkillItems() {
         SKILL_ITEMS.clear();
-        add(VALORANT.LEIZHIBOMB_ITEM.get());
-        add(VALORANT.BIGBOMB_ITEM.get());
-        add(VALORANT.BOOMBOT_ITEM.get());
-        add(VALORANT.BLASTPACK_ITEM.get());
-        add(VALORANT.SAGE_HEAL_ITEM.get());
-        add(VALORANT.SAGE_BARRIER_ITEM.get());
-        add(VALORANT.SAGE_SLOW_ITEM.get());
-        add(VALORANT.SAGE_RESURRECTION_ITEM.get());
-        add(VALORANT.PHOENIX_CURVEBALL_ITEM.get());
-        add(VALORANT.PHOENIX_HOT_HANDS_ITEM.get());
-        add(VALORANT.PHOENIX_BLAZE_ITEM.get());
-        add(VALORANT.PHOENIX_RUN_IT_BACK_ITEM.get());
-        add(VALORANT.CLOVE_RUSE_ITEM.get());
-        add(VALORANT.CLOVE_MEDDLE_ITEM.get());
-        add(VALORANT.CLOVE_PICK_ME_UP_ITEM.get());
-        add(VALORANT.CLOVE_NOT_DEAD_YET_ITEM.get());
-        add(VALORANT.JETT_CLOUDBURST_ITEM.get());
-        add(VALORANT.JETT_UPDRAFT_ITEM.get());
-        add(VALORANT.JETT_TAILWIND_ITEM.get());
-        add(VALORANT.JETT_BLADE_STORM_ITEM.get());
+        add(Valorant.LEIZHIBOMB_ITEM.get());
+        add(Valorant.BIGBOMB_ITEM.get());
+        add(Valorant.BOOMBOT_ITEM.get());
+        add(Valorant.BLASTPACK_ITEM.get());
+        add(Valorant.SAGE_HEAL_ITEM.get());
+        add(Valorant.SAGE_BARRIER_ITEM.get());
+        add(Valorant.SAGE_SLOW_ITEM.get());
+        add(Valorant.SAGE_RESURRECTION_ITEM.get());
+        add(Valorant.PHOENIX_CURVEBALL_ITEM.get());
+        add(Valorant.PHOENIX_HOT_HANDS_ITEM.get());
+        add(Valorant.PHOENIX_BLAZE_ITEM.get());
+        add(Valorant.PHOENIX_RUN_IT_BACK_ITEM.get());
+        add(Valorant.CLOVE_RUSE_ITEM.get());
+        add(Valorant.CLOVE_MEDDLE_ITEM.get());
+        add(Valorant.CLOVE_PICK_ME_UP_ITEM.get());
+        add(Valorant.CLOVE_NOT_DEAD_YET_ITEM.get());
+        add(Valorant.JETT_CLOUDBURST_ITEM.get());
+        add(Valorant.JETT_UPDRAFT_ITEM.get());
+        add(Valorant.JETT_TAILWIND_ITEM.get());
+        add(Valorant.JETT_BLADE_STORM_ITEM.get());
     }
 
     @SubscribeEvent
@@ -91,11 +91,11 @@ public final class ValorantSkillUseHandler {
             toggleBarrier(player);
             return;
         }
-        if (item == VALORANT.BLASTPACK_ITEM.get()) {
+        if (item == Valorant.BLASTPACK_ITEM.get()) {
             useItem(player, item);
             return;
         }
-        if (item == VALORANT.JETT_BLADE_STORM_ITEM.get()) {
+        if (item == Valorant.JETT_BLADE_STORM_ITEM.get()) {
             if (!JettBladeStormTracker.isActive(player)) {
                 useItem(player, item);
             }
@@ -118,11 +118,11 @@ public final class ValorantSkillUseHandler {
             HELD.remove(player.getUUID());
             return;
         }
-        if (item == VALORANT.JETT_CLOUDBURST_ITEM.get()) {
+        if (item == Valorant.JETT_CLOUDBURST_ITEM.get()) {
             JettCloudburstEntity.guideOwned(level, player);
-        } else if (item == VALORANT.PHOENIX_CURVEBALL_ITEM.get()) {
+        } else if (item == Valorant.PHOENIX_CURVEBALL_ITEM.get()) {
             PhoenixCurveballEntity.guideOwned(level, player);
-        } else if (item == VALORANT.PHOENIX_BLAZE_ITEM.get() && !PhoenixBlazeItem.tickWall(level, player, item)) {
+        } else if (item == Valorant.PHOENIX_BLAZE_ITEM.get() && !PhoenixBlazeItem.tickWall(level, player, item)) {
             HELD.remove(player.getUUID());
         }
     }
@@ -133,7 +133,7 @@ public final class ValorantSkillUseHandler {
 
     private static void primary(ServerPlayer player) {
         if (BARRIER_PENDING.remove(player.getUUID())) {
-            if (!useItem(player, VALORANT.SAGE_BARRIER_ITEM.get())) {
+            if (!useItem(player, Valorant.SAGE_BARRIER_ITEM.get())) {
                 BARRIER_PENDING.add(player.getUUID());
             }
             return;
@@ -154,7 +154,7 @@ public final class ValorantSkillUseHandler {
             return;
         }
         Item item = BuiltInRegistries.ITEM.getValue(held.itemId);
-        if (item == VALORANT.PHOENIX_BLAZE_ITEM.get()) {
+        if (item == Valorant.PHOENIX_BLAZE_ITEM.get()) {
             PhoenixBlazeItem.releaseWall(level, player, item);
         }
     }
@@ -162,7 +162,7 @@ public final class ValorantSkillUseHandler {
     private static void toggleBarrier(ServerPlayer player) {
         if (BARRIER_PENDING.contains(player.getUUID())) {
             SageBarrierModeTracker.setRotated(player, !SageBarrierModeTracker.isRotated(player));
-        } else if (findSlot(player, VALORANT.SAGE_BARRIER_ITEM.get()) >= 0) {
+        } else if (findSlot(player, Valorant.SAGE_BARRIER_ITEM.get()) >= 0) {
             SageBarrierModeTracker.setRotated(player, false);
             BARRIER_PENDING.add(player.getUUID());
         }
@@ -178,7 +178,7 @@ public final class ValorantSkillUseHandler {
 
     private static boolean useItem(ServerPlayer player, Item item) {
         int slot = findSlot(player, item);
-        if (slot < 0 && item == VALORANT.BLASTPACK_ITEM.get() && player.level() instanceof ServerLevel level && BlastPackItem.hasOwnedPacks(level, player)) {
+        if (slot < 0 && item == Valorant.BLASTPACK_ITEM.get() && player.level() instanceof ServerLevel level && BlastPackItem.hasOwnedPacks(level, player)) {
             return item.use(player.level(), player, InteractionHand.MAIN_HAND).consumesAction();
         }
         if (slot < 0) {
@@ -219,13 +219,13 @@ public final class ValorantSkillUseHandler {
     }
 
     private static boolean isHoldSkill(Item item) {
-        return item == VALORANT.JETT_CLOUDBURST_ITEM.get()
-                || item == VALORANT.PHOENIX_CURVEBALL_ITEM.get()
-                || item == VALORANT.PHOENIX_BLAZE_ITEM.get();
+        return item == Valorant.JETT_CLOUDBURST_ITEM.get()
+                || item == Valorant.PHOENIX_CURVEBALL_ITEM.get()
+                || item == Valorant.PHOENIX_BLAZE_ITEM.get();
     }
 
     private static boolean isBarrier(Item item) {
-        return item == VALORANT.SAGE_BARRIER_ITEM.get();
+        return item == Valorant.SAGE_BARRIER_ITEM.get();
     }
 
     private record HeldSkill(Identifier itemId) {

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.runitback;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class PhoenixRunItBackTracker {
     private static final Map<UUID, Integer> ANCHORS = new HashMap<>();
 
@@ -92,7 +92,7 @@ public final class PhoenixRunItBackTracker {
         if (!player.getAbilities().instabuild) {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack s = player.getInventory().getItem(i);
-                if (s.is(VALORANT.PHOENIX_RUN_IT_BACK_ITEM.get())) {
+                if (s.is(Valorant.PHOENIX_RUN_IT_BACK_ITEM.get())) {
                     s.shrink(1);
                     break;
                 }

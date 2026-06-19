@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.blaze;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -37,7 +37,7 @@ public class PhoenixBlazeItem extends Item {
             spawnNextWall(serverLevel, player, state);
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.PHOENIX_BLAZE_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.PHOENIX_BLAZE_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         player.startUsingItem(hand);
         return InteractionResult.CONSUME;

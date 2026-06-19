@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.hothands;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +11,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
@@ -30,7 +29,7 @@ public class PhoenixHotHandsItem extends Item implements ProjectileItem {
             Projectile.spawnProjectileFromRotation(PhoenixHotHandsEntity::new, serverLevel, itemStack, player, 0.0F, 0.95F, 0.0F);
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.PHOENIX_HOT_HANDS_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.PHOENIX_HOT_HANDS_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         if (!player.getAbilities().instabuild) { itemStack.shrink(1); }
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;

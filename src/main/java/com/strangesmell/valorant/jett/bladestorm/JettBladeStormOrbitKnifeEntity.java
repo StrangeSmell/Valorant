@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.bladestorm;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -32,7 +32,7 @@ public class JettBladeStormOrbitKnifeEntity extends Entity implements net.minecr
     }
 
     public JettBladeStormOrbitKnifeEntity(Level level, Player owner, int index) {
-        this(VALORANT.JETT_BLADE_STORM_ORBIT_KNIFE.get(), level);
+        this(Valorant.JETT_BLADE_STORM_ORBIT_KNIFE.get(), level);
         this.ownerUuid = owner.getUUID();
         this.index = index;
         this.entityData.set(DATA_OWNER_ID, owner.getId());

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.slow;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -22,11 +22,11 @@ public class SageSlowOrbEntity extends ThrowableItemProjectile {
     }
 
     public SageSlowOrbEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.SAGE_SLOW_ORB.get(), owner, level, item);
+        super(Valorant.SAGE_SLOW_ORB.get(), owner, level, item);
     }
 
     public SageSlowOrbEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.SAGE_SLOW_ORB.get(), x, y, z, level, item);
+        super(Valorant.SAGE_SLOW_ORB.get(), x, y, z, level, item);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class SageSlowOrbEntity extends ThrowableItemProjectile {
     private void spawnField() {
         if (this.level() instanceof ServerLevel serverLevel) {
             serverLevel.addFreshEntity(new SageSlowFieldEntity(serverLevel, this.getX(), this.getY(), this.getZ()));
-            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.SAGE_SLOW_ORB_DISAPPEAR.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.SAGE_SLOW_ORB_DISAPPEAR.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             serverLevel.sendParticles(ParticleTypes.SNOWFLAKE, this.getX(), this.getY(), this.getZ(), 80, 1.8D, 0.4D, 1.8D, 0.05D);
         }
         this.discard();

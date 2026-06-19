@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.blaze;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +25,7 @@ public class PhoenixBlazeWallEntity extends Entity {
     }
 
     public PhoenixBlazeWallEntity(Level level, double x, double y, double z, Entity owner) {
-        this(VALORANT.PHOENIX_BLAZE_WALL.get(), level);
+        this(Valorant.PHOENIX_BLAZE_WALL.get(), level);
         this.owner = owner;
         this.setPos(x, y, z);
     }

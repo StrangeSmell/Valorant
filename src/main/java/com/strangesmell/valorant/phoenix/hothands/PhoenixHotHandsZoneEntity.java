@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.hothands;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +25,7 @@ public class PhoenixHotHandsZoneEntity extends Entity {
     }
 
     public PhoenixHotHandsZoneEntity(Level level, double x, double y, double z, Entity owner) {
-        this(VALORANT.PHOENIX_HOT_HANDS_ZONE.get(), level);
+        this(Valorant.PHOENIX_HOT_HANDS_ZONE.get(), level);
         this.owner = owner;
         this.setPos(x, y, z);
     }

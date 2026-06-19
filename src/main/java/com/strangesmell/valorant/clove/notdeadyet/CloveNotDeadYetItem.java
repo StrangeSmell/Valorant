@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.notdeadyet;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -25,7 +25,7 @@ public class CloveNotDeadYetItem extends Item {
             player.sendSystemMessage(Component.translatable("message.valorant.clove_not_dead_yet.death_only"));
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.CLOVE_NOT_DEAD_YET_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.CLOVE_NOT_DEAD_YET_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;
     }

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.updraft;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -30,7 +30,7 @@ public class JettUpdraftItem extends Item {
             serverLevel.sendParticles(ParticleTypes.CLOUD, player.getX(), player.getY(), player.getZ(), 36, 0.6D, 0.2D, 0.6D, 0.08D);
         }
         itemStack.consume(1, player);
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_UPDRAFT_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_UPDRAFT_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;
     }

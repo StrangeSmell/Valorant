@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.bladestorm;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -25,12 +25,12 @@ public class JettBladeStormKnifeEntity extends ThrowableItemProjectile {
     }
 
     public JettBladeStormKnifeEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.JETT_BLADE_STORM_KNIFE.get(), owner, level, item);
+        super(Valorant.JETT_BLADE_STORM_KNIFE.get(), owner, level, item);
         this.setNoGravity(true);
     }
 
     public JettBladeStormKnifeEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.JETT_BLADE_STORM_KNIFE.get(), x, y, z, level, item);
+        super(Valorant.JETT_BLADE_STORM_KNIFE.get(), x, y, z, level, item);
         this.setNoGravity(true);
     }
 

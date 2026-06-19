@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.blastpack;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -38,11 +38,11 @@ public class BlastPackEntity extends ThrowableItemProjectile {
     }
 
     public BlastPackEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.BLASTPACK.get(), owner, level, item);
+        super(Valorant.BLASTPACK.get(), owner, level, item);
     }
 
     public BlastPackEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.BLASTPACK.get(), x, y, z, level, item);
+        super(Valorant.BLASTPACK.get(), x, y, z, level, item);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class BlastPackEntity extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return VALORANT.BLASTPACK_ITEM.get();
+        return Valorant.BLASTPACK_ITEM.get();
     }
 
     public ItemStack getRenderItem() {
@@ -110,7 +110,7 @@ public class BlastPackEntity extends ThrowableItemProjectile {
         this.setExploded(true);
         this.level().broadcastEntityEvent(this, (byte)3);
         this.gameEvent(GameEvent.EXPLODE, this.getOwner());
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.LEIZHI_BLAST_PACK_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.LEIZHI_BLAST_PACK_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
         Vec3 center = this.position();
         for (LivingEntity target : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(RADIUS), LivingEntity::isAlive)) {

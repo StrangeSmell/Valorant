@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.cloudburst;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -10,7 +10,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
@@ -31,7 +30,7 @@ public class JettCloudburstItem extends Item {
             Projectile.spawnProjectileFromRotation(JettCloudburstEntity::new, serverLevel, itemStack, player, 0.0F, 1.0F, 0.0F);
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_CLOUDBURST_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_CLOUDBURST_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         player.startUsingItem(hand);
         return InteractionResult.CONSUME;

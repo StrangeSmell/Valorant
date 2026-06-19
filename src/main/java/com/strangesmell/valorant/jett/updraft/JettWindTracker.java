@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.updraft;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class JettWindTracker {
     private static final Map<UUID, Long> FALL_PROTECTION = new HashMap<>();
 

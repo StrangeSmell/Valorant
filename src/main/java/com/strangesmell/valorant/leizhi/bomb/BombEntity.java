@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.bomb;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -39,11 +39,11 @@ public class BombEntity extends ThrowableItemProjectile {
     }
 
     public BombEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.LEIZHIBOMB.get(), owner, level, item);
+        super(Valorant.LEIZHIBOMB.get(), owner, level, item);
     }
 
     public BombEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.LEIZHIBOMB.get(), x, y, z, level, item);
+        super(Valorant.LEIZHIBOMB.get(), x, y, z, level, item);
     }
 
     public void tick() {
@@ -55,25 +55,25 @@ public class BombEntity extends ThrowableItemProjectile {
         setDis(getDis() + 1);
         if(!this.level().isClientSide() && getDis() > 40 && !this.getHave()) {
             this.setHave(true);
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.LEIZHI_PAINT_SHELLS_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.LEIZHI_PAINT_SHELLS_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             this.damageInRadius(EXPLOSION_RADIUS, MAX_DAMAGE);
 
             //闂傚倸鍊风粈渚€骞夐垾鎰佹綎缂備焦蓱閸欏繘鏌熺紒銏犳灈闁活厽顨婇弻娑㈠焺閸愵亖妲堥梺缁樺姇閿曘儳鎹㈠☉銏犵闁绘垵妫欓悿渚€姊洪幖鐐测偓鏇㈩敄婢舵劕绠栨俊顖濇硶閻も偓闂佽鍎虫晶搴敊婵犲洦鈷戠紒瀣儥閸庡秹鏌涢妸銉хШ妞?
 
             if(level() instanceof ServerLevel serverLevel){
-                SmellBombEntity smellBombEntity1 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+                SmellBombEntity smellBombEntity1 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
                 level().addFreshEntity(smellBombEntity1);
                 smellBombEntity1.setDeltaMovement(0.25, 0.25, 0.25);
 
-                SmellBombEntity smellBombEntity2 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+                SmellBombEntity smellBombEntity2 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
                 level().addFreshEntity(smellBombEntity2);
                 smellBombEntity2.setDeltaMovement(-0.25, 0.25, 0.25);
 
-                SmellBombEntity smellBombEntity3 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+                SmellBombEntity smellBombEntity3 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
                 level().addFreshEntity(smellBombEntity3);
                 smellBombEntity3.setDeltaMovement(0.25, 0.25, -0.25);
 
-                SmellBombEntity smellBombEntity4 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+                SmellBombEntity smellBombEntity4 = new SmellBombEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
                 level().addFreshEntity(smellBombEntity4);
                 smellBombEntity4.setDeltaMovement(-0.25, 0.25, -0.25);
             }
@@ -154,7 +154,7 @@ public class BombEntity extends ThrowableItemProjectile {
         }
         Direction direction = result.getDirection();
         Vec3 vec3 = this.getDeltaMovement();
-        BombEntity bomb = new BombEntity(level(), this.getX(), this.getY()+0.1, this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+        BombEntity bomb = new BombEntity(level(), this.getX(), this.getY()+0.1, this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
         bomb.setDis(this.getDis()+5);
         bomb.setHave(this.getHave());
         this.discard();

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.resurrection;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -53,7 +53,7 @@ public class SageResurrectionEntity extends Entity implements ItemSupplier {
     }
 
     public SageResurrectionEntity(Level level, double x, double y, double z, Player owner) {
-        this(VALORANT.SAGE_RESURRECTION.get(), level);
+        this(Valorant.SAGE_RESURRECTION.get(), level);
         this.setOwner(owner);
         this.setPos(x, y, z);
         this.setCustomNameVisible(true);
@@ -121,7 +121,7 @@ public class SageResurrectionEntity extends Entity implements ItemSupplier {
     @Override
     public InteractionResult interact(Player player, InteractionHand hand, Vec3 clickPos) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if (!itemStack.is(VALORANT.SAGE_RESURRECTION_ITEM.get())) {
+        if (!itemStack.is(Valorant.SAGE_RESURRECTION_ITEM.get())) {
             return InteractionResult.PASS;
         }
         if (player.level().isClientSide()) {
@@ -135,7 +135,7 @@ public class SageResurrectionEntity extends Entity implements ItemSupplier {
             return InteractionResult.PASS;
         }
 
-        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.SAGE_RESURRECTION_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.SAGE_RESURRECTION_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
         return InteractionResult.SUCCESS;
     }

@@ -1,9 +1,8 @@
 package com.strangesmell.valorant.clove.ruse;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +22,7 @@ public class CloveRuseItem extends Item {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.CLOVE_RUSE_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.CLOVE_RUSE_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
         if (level.isClientSide()) {
             openRuseScreen();

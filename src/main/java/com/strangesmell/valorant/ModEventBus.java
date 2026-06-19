@@ -25,9 +25,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.List;
 
-import static com.strangesmell.valorant.VALORANT.TimePos;
+import static com.strangesmell.valorant.Valorant.TimePos;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public class ModEventBus {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerDeath(LivingDeathEvent event) {

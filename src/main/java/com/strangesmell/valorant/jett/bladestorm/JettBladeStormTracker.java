@@ -1,8 +1,7 @@
 package com.strangesmell.valorant.jett.bladestorm;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +19,7 @@ import java.util.UUID;
 
 import static net.minecraft.world.level.block.SculkSensorBlock.COOLDOWN_TICKS;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class JettBladeStormTracker {
     private static final int MAX_KNIVES = 5;
     private static final long LIFE_TIME = 600L;
@@ -35,7 +34,7 @@ public final class JettBladeStormTracker {
         State state = STATES.get(player.getUUID());
         if (state == null || state.expiresAt < level.getGameTime() || state.knives <= 0) {
             setKnives(level, player, MAX_KNIVES);
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_BLADE_STORM_READY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_BLADE_STORM_READY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             return;
         }
 
@@ -51,7 +50,7 @@ public final class JettBladeStormTracker {
         fireOne(level, player, state, 0.0F, 0.0F, true);
         if (state.knives <= 0) {
             STATES.remove(player.getUUID());
-            player.getCooldowns().addCooldown(VALORANT.JETT_BLADE_STORM_ITEM.toStack(), COOLDOWN_TICKS);
+            player.getCooldowns().addCooldown(Valorant.JETT_BLADE_STORM_ITEM.toStack(), COOLDOWN_TICKS);
         }
         return true;
     }
@@ -72,11 +71,11 @@ public final class JettBladeStormTracker {
             double centered = i - (knivesToFire - 1) / 2.0D;
             fireOne(level, player, state, 0.0F, (float)(centered * SPREAD_STEP), false);
         }
-        player.getCooldowns().addCooldown(VALORANT.JETT_BLADE_STORM_ITEM.toStack(), COOLDOWN_TICKS);
+        player.getCooldowns().addCooldown(Valorant.JETT_BLADE_STORM_ITEM.toStack(), COOLDOWN_TICKS);
 
         discardOrbitKnives(level, state);
         STATES.remove(player.getUUID());
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_BLADE_STORM_THROW_ALL.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_BLADE_STORM_THROW_ALL.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 
     private static void fireOne(ServerLevel level, ServerPlayer player, State state, float xRotOffset, float yRotOffset, boolean playSound) {
@@ -88,7 +87,7 @@ public final class JettBladeStormTracker {
         knife.shootFromRotation(player, player.getXRot() + xRotOffset, player.getYRot() + yRotOffset, 0.0F, KNIFE_SPEED, 0.0F);
         level.addFreshEntity(knife);
         if (playSound) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_BLADE_STORM_THROW.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_BLADE_STORM_THROW.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         }
     }
 
@@ -109,7 +108,7 @@ public final class JettBladeStormTracker {
             State state = STATES.get(player.getUUID());
             if (state != null) {
                 refresh(level, player);
-                player.getCooldowns().removeCooldown(VALORANT.JETT_BLADE_STORM_ITEM.getId());
+                player.getCooldowns().removeCooldown(Valorant.JETT_BLADE_STORM_ITEM.getId());
 
             }
         }

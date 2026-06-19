@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.heal;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -47,7 +47,7 @@ public class SageHealItem extends Item {
             serverLevel.sendParticles(ParticleTypes.HEART, target.getX(), target.getY() + 1.0D, target.getZ(), 14, 0.6D, 0.8D, 0.6D, 0.04D);
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.SAGE_HEALING_ORB_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.SAGE_HEALING_ORB_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;
     }

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.blastpack;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.server.level.ServerLevel;
@@ -10,7 +10,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
@@ -48,7 +47,7 @@ public class BlastPackItem extends Item implements ProjectileItem {
                 itemStack.consume(1, player);
                 return InteractionResult.SUCCESS;
             }else {
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.LEIZHI_BLAST_PACK_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.LEIZHI_BLAST_PACK_USE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
             }
             Projectile.spawnProjectileFromRotation(BlastPackEntity::new, serverLevel, itemStack, player, 0.0F, 0.85F, 0.0F);

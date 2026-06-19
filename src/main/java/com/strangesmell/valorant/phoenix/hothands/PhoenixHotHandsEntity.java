@@ -1,9 +1,8 @@
 package com.strangesmell.valorant.phoenix.hothands;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,11 +23,11 @@ public class PhoenixHotHandsEntity extends ThrowableItemProjectile {
     }
 
     public PhoenixHotHandsEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.PHOENIX_HOT_HANDS.get(), owner, level, item);
+        super(Valorant.PHOENIX_HOT_HANDS.get(), owner, level, item);
     }
 
     public PhoenixHotHandsEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.PHOENIX_HOT_HANDS.get(), x, y, z, level, item);
+        super(Valorant.PHOENIX_HOT_HANDS.get(), x, y, z, level, item);
     }
 
     @Override

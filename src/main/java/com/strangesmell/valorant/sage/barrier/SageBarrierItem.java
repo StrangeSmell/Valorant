@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.barrier;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -39,7 +39,7 @@ public class SageBarrierItem extends Item {
             itemStack.consume(1, player);
         }
 
-        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), VALORANT.SAGE_BARRIER_ORB_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound((Entity)null, player.getX(), player.getY(), player.getZ(), Valorant.SAGE_BARRIER_ORB_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResult.SUCCESS;
     }

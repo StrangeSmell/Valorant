@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.cloudburst;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -21,7 +21,7 @@ public class JettCloudburstSmokeEntity extends Entity {
     }
 
     public JettCloudburstSmokeEntity(Level level, double x, double y, double z) {
-        this(VALORANT.JETT_CLOUDBURST_SMOKE.get(), level);
+        this(Valorant.JETT_CLOUDBURST_SMOKE.get(), level);
         this.setPos(x, y, z);
     }
 

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.meddle;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class CloveMeddleDecayTracker {
     private static final long DECAY_TIME = 100L;
     private static final float MIN_HEALTH_AFTER_DECAY = 2.0F;

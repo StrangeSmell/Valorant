@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.boombot;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -54,11 +54,11 @@ public class BoomBotEntity extends ThrowableItemProjectile {
     }
 
     public BoomBotEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.BOOMBOT.get(), owner, level, item);
+        super(Valorant.BOOMBOT.get(), owner, level, item);
     }
 
     public BoomBotEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.BOOMBOT.get(), x, y, z, level, item);
+        super(Valorant.BOOMBOT.get(), x, y, z, level, item);
     }
 
     @Override
@@ -211,7 +211,7 @@ public class BoomBotEntity extends ThrowableItemProjectile {
         this.setExploded(true);
         this.level().broadcastEntityEvent(this, (byte)3);
         this.gameEvent(GameEvent.EXPLODE, this.getOwner());
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.LEIZHI_BOOM_BOT_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.LEIZHI_BOOM_BOT_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
         Vec3 center = this.position();
         Entity owner = this.getOwner();

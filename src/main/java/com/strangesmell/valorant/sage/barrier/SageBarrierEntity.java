@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.barrier;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -33,7 +33,7 @@ public class SageBarrierEntity extends Entity {
     }
 
     public SageBarrierEntity(Level level, List<BlockPos> blocks) {
-        this(VALORANT.SAGE_BARRIER.get(), level);
+        this(Valorant.SAGE_BARRIER.get(), level);
         this.blocks.addAll(blocks);
         if (!blocks.isEmpty()) {
             this.setPos(blocks.getFirst().getCenter());
@@ -58,7 +58,7 @@ public class SageBarrierEntity extends Entity {
         }
         this.removedBarrier = true;
         if (!this.blocks.isEmpty()) {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.SAGE_BARRIER_ORB_DISAPPEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.SAGE_BARRIER_ORB_DISAPPEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
         for (BlockPos pos : this.blocks) {
             if (this.level().getBlockState(pos).is(Blocks.BLUE_ICE)) {

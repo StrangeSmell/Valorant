@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.meddle;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -32,11 +32,11 @@ public class CloveMeddleEntity extends ThrowableItemProjectile {
     }
 
     public CloveMeddleEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.CLOVE_MEDDLE.get(), owner, level, item);
+        super(Valorant.CLOVE_MEDDLE.get(), owner, level, item);
     }
 
     public CloveMeddleEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.CLOVE_MEDDLE.get(), x, y, z, level, item);
+        super(Valorant.CLOVE_MEDDLE.get(), x, y, z, level, item);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class CloveMeddleEntity extends ThrowableItemProjectile {
                     target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 120, 0));
                 }
             }
-            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.CLOVE_MEDDLE_EXPLODE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.CLOVE_MEDDLE_EXPLODE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             serverLevel.sendParticles(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFF7C4DFF), this.getX(), this.getY(), this.getZ(), 60, 1.5D, 0.8D, 1.5D, 0.05D);
         }
         this.discard();

@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.phoenix.runitback;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -26,7 +26,7 @@ public class PhoenixRunItBackAnchorEntity extends Entity {
     }
 
     public PhoenixRunItBackAnchorEntity(Level level, Player owner) {
-        this(VALORANT.PHOENIX_RUN_IT_BACK_ANCHOR.get(), level);
+        this(Valorant.PHOENIX_RUN_IT_BACK_ANCHOR.get(), level);
         this.ownerUuid = owner.getUUID();
         this.setPos(owner.getX(), owner.getY(), owner.getZ());
     }

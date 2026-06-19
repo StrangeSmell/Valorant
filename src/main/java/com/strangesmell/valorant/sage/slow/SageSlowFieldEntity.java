@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.sage.slow;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.Identifier;
@@ -26,7 +26,7 @@ import java.util.UUID;
 public class SageSlowFieldEntity extends Entity {
     private static final double RADIUS = 4.0D;
     private static final int LIFE_TIME_TICKS = 7 * 20;
-    private static final Identifier SLOW_MODIFIER = Identifier.fromNamespaceAndPath(VALORANT.MODID, "sage_slow_field");
+    private static final Identifier SLOW_MODIFIER = Identifier.fromNamespaceAndPath(Valorant.MODID, "sage_slow_field");
     private static final AttributeModifier SLOWNESS = new AttributeModifier(SLOW_MODIFIER, -0.5D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     private static final Map<UUID, Integer> SLOW_COUNTS = new HashMap<>();
     private final Set<LivingEntity> slowedTargets = new HashSet<>();
@@ -37,7 +37,7 @@ public class SageSlowFieldEntity extends Entity {
     }
 
     public SageSlowFieldEntity(Level level, double x, double y, double z) {
-        this(VALORANT.SAGE_SLOW_FIELD.get(), level);
+        this(Valorant.SAGE_SLOW_FIELD.get(), level);
         this.setPos(x, y, z);
     }
 

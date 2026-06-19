@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.clove.notdeadyet;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class CloveNotDeadYetTracker {
     private static final long REVIVE_WINDOW = 200L;
     private static final long BUTTON_WINDOW = 200L;
@@ -120,7 +120,7 @@ public final class CloveNotDeadYetTracker {
     private static boolean hasSkillItem(Player player) {
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.is(VALORANT.CLOVE_NOT_DEAD_YET_ITEM.get())) {
+            if (stack.is(Valorant.CLOVE_NOT_DEAD_YET_ITEM.get())) {
                 return true;
             }
         }

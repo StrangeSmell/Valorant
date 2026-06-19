@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.bomb;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -30,11 +30,11 @@ public class SmellBombEntity extends ThrowableItemProjectile {
     }
 
     public SmellBombEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.LEIZHIBOMB.get(), owner, level, item);
+        super(Valorant.LEIZHIBOMB.get(), owner, level, item);
     }
 
     public SmellBombEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.LEIZHIBOMB.get(), x, y, z, level, item);
+        super(Valorant.LEIZHIBOMB.get(), x, y, z, level, item);
     }
 
     public void tick() {
@@ -47,14 +47,14 @@ public class SmellBombEntity extends ThrowableItemProjectile {
         setDis(getDis() + 1);
         if(!this.level().isClientSide() && getDis() > 20 && !this.getHave()) {
             this.setHave(true);
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.LEIZHI_PAINT_SHELLS_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.LEIZHI_PAINT_SHELLS_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             this.damageInRadius(EXPLOSION_RADIUS, MAX_DAMAGE);
             this.discard();
         }
     }
 
     protected Item getDefaultItem() {
-        return VALORANT.LEIZHIBOMB_ITEM.get();
+        return Valorant.LEIZHIBOMB_ITEM.get();
     }
 
 
@@ -109,7 +109,7 @@ public class SmellBombEntity extends ThrowableItemProjectile {
         }
         Direction direction = result.getDirection();
         Vec3 vec3 = this.getDeltaMovement();
-        SmellBombEntity bomb = new SmellBombEntity(level(), this.getX(), this.getY()+0.1, this.getZ(), new ItemStack(VALORANT.LEIZHIBOMB_ITEM.get()));
+        SmellBombEntity bomb = new SmellBombEntity(level(), this.getX(), this.getY()+0.1, this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
         bomb.setDis(this.getDis()+5);
         bomb.setHave(this.getHave());
         this.discard();

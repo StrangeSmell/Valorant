@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.jett.tailwind;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import com.strangesmell.valorant.jett.updraft.JettWindTracker;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = VALORANT.MODID)
+@EventBusSubscriber(modid = Valorant.MODID)
 public final class JettTailwindTracker {
     private static final long WAIT_TIME = 150L;
     private static final long WINDUP = 20L;
@@ -31,7 +31,7 @@ public final class JettTailwindTracker {
     public static void arm(ServerLevel level, ServerPlayer player) {
         WAITING.put(player.getUUID(), new State(level.getGameTime() + WINDUP, level.getGameTime() + WINDUP + WAIT_TIME));
         level.sendParticles(ParticleTypes.CLOUD, player.getX(), player.getY() + 0.5D, player.getZ(), 20, 0.35D, 0.35D, 0.35D, 0.03D);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_TAILWIND_READY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_TAILWIND_READY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 
     // isReady: windup finished, waiting for dash trigger
@@ -62,7 +62,7 @@ public final class JettTailwindTracker {
         player.hurtMarked = true;
         JettWindTracker.grantFallProtection(player, time + DASH_TIME);
         level.sendParticles(ParticleTypes.CLOUD, player.getX(), player.getY() + 0.4D, player.getZ(), 54, 0.8D, 0.35D, 0.8D, 0.12D);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), VALORANT.JETT_TAILWIND_DASH.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Valorant.JETT_TAILWIND_DASH.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
     }
 

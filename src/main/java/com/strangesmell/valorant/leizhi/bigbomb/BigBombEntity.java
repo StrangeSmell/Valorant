@@ -1,6 +1,6 @@
 package com.strangesmell.valorant.leizhi.bigbomb;
 
-import com.strangesmell.valorant.VALORANT;
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
@@ -38,11 +37,11 @@ public class BigBombEntity extends ThrowableItemProjectile {
     }
 
     public BigBombEntity(Level level, LivingEntity owner, ItemStack item) {
-        super(VALORANT.BIGBOMB.get(), owner, level, item);
+        super(Valorant.BIGBOMB.get(), owner, level, item);
     }
 
     public BigBombEntity(Level level, double x, double y, double z, ItemStack item) {
-        super(VALORANT.BIGBOMB.get(), x, y, z, level, item);
+        super(Valorant.BIGBOMB.get(), x, y, z, level, item);
     }
 
     @Override
@@ -65,7 +64,7 @@ public class BigBombEntity extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return VALORANT.BIGBOMB_ITEM.get();
+        return Valorant.BIGBOMB_ITEM.get();
     }
 
     public ItemStack getRenderItem() {
@@ -96,7 +95,7 @@ public class BigBombEntity extends ThrowableItemProjectile {
         this.setExploded(true);
         this.level().broadcastEntityEvent(this, (byte)3);
         this.gameEvent(GameEvent.EXPLODE, this.getOwner());
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), VALORANT.LEIZHI_SHOWSTOPPER_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), Valorant.LEIZHI_SHOWSTOPPER_EXPLODE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
         Vec3 center = this.position();
         AABB area = this.getBoundingBox().inflate(RADIUS);
