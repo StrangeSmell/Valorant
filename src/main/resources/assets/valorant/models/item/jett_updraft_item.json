@@ -1,0 +1,6 @@
+﻿{
+    "parent":  "minecraft:item/generated",
+    "textures":  {
+                     "layer0":  "valorant:item/jett_updraft_item"
+                 }
+}

@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[3,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="valorant"
+version="1.0.0"
+displayName="Valorant"
+authors="StrangeSmell"
+description='''VALORANT abilities ported to NeoForge 26.1.'''
+
+[[dependencies.valorant]]
+    modId="neoforge"
+    mandatory=true
+    versionRange="[26.1,27)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.valorant]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[26.1.2]"
+    ordering="NONE"
+    side="BOTH"

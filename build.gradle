@@ -56,7 +56,7 @@ neoForge {
 
         server {
             server()
-            programArgument '--nogui'
+
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
@@ -182,5 +182,12 @@ idea {
     module {
         downloadSources = true
         downloadJavadoc = true
+    }
+}
+
+// Explicitly set the JVM for NeoForge run tasks to Java 25
+tasks.withType(net.neoforged.moddevgradle.internal.RunGameTask).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }

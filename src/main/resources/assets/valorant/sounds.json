@@ -1,0 +1,250 @@
+{
+  "leizhi.paint_shells.use": {
+    "subtitle": "subtitles.valorant.leizhi.paint_shells.use",
+    "sounds": [
+      "valorant:leizhi/paint_shells_use"
+    ]
+  },
+  "leizhi.paint_shells.loop": {
+    "subtitle": "subtitles.valorant.leizhi.paint_shells.loop",
+    "sounds": [
+      "valorant:leizhi/paint_shells_loop"
+    ]
+  },
+  "leizhi.paint_shells.explode": {
+    "subtitle": "subtitles.valorant.leizhi.paint_shells.explode",
+    "sounds": [
+      "valorant:leizhi/paint_shells_explode"
+    ]
+  },
+  "leizhi.showstopper.use": {
+    "subtitle": "subtitles.valorant.leizhi.showstopper.use",
+    "sounds": [
+      "valorant:leizhi/showstopper_use"
+    ]
+  },
+  "leizhi.showstopper.explode": {
+    "subtitle": "subtitles.valorant.leizhi.showstopper.explode",
+    "sounds": [
+      "valorant:leizhi/showstopper_explode"
+    ]
+  },
+  "leizhi.boom_bot.use": {
+    "subtitle": "subtitles.valorant.leizhi.boom_bot.use",
+    "sounds": [
+      "valorant:leizhi/boom_bot_use"
+    ]
+  },
+  "leizhi.boom_bot.explode": {
+    "subtitle": "subtitles.valorant.leizhi.boom_bot.explode",
+    "sounds": [
+      {
+        "name": "minecraft:entity.generic.explode",
+        "type": "event"
+      }
+    ]
+  },
+  "leizhi.boom_bot.loop": {
+    "subtitle": "subtitles.valorant.leizhi.boom_bot.loop",
+    "sounds": [
+      "valorant:leizhi/boom_bot_loop"
+    ]
+  },
+  "leizhi.blast_pack.use": {
+    "subtitle": "subtitles.valorant.leizhi.blast_pack.use",
+    "sounds": [
+      "valorant:leizhi/blast_pack_use"
+    ]
+  },
+  "leizhi.blast_pack.loop": {
+    "subtitle": "subtitles.valorant.leizhi.blast_pack.loop",
+    "sounds": [
+      "valorant:leizhi/blast_pack_loop"
+    ]
+  },
+  "leizhi.blast_pack.stick": {
+    "subtitle": "subtitles.valorant.leizhi.blast_pack.stick",
+    "sounds": [
+      "valorant:leizhi/blast_pack_loop"
+    ]
+  },
+  "leizhi.blast_pack.explode": {
+    "subtitle": "subtitles.valorant.leizhi.blast_pack.explode",
+    "sounds": [
+      "valorant:leizhi/blast_pack_explode"
+    ]
+  },
+  "sage.healing_orb.use": {
+    "subtitle": "subtitles.valorant.sage.healing_orb.use",
+    "sounds": [
+      "valorant:sage/healing_orb_use"
+    ]
+  },
+  "sage.barrier_orb.use": {
+    "subtitle": "subtitles.valorant.sage.barrier_orb.use",
+    "sounds": [
+      "valorant:sage/barrier_orb_use"
+    ]
+  },
+  "sage.barrier_orb.disappear": {
+    "subtitle": "subtitles.valorant.sage.barrier_orb.disappear",
+    "sounds": [
+      "valorant:sage/barrier_orb_disappear"
+    ]
+  },
+  "sage.slow_orb.use": {
+    "subtitle": "subtitles.valorant.sage.slow_orb.use",
+    "sounds": [
+      "valorant:sage/slow_orb_use"
+    ]
+  },
+  "sage.slow_orb.disappear": {
+    "subtitle": "subtitles.valorant.sage.slow_orb.disappear",
+    "sounds": [
+      "valorant:sage/slow_orb_disappear"
+    ]
+  },
+  "sage.resurrection.use": {
+    "subtitle": "subtitles.valorant.sage.resurrection.use",
+    "sounds": [
+      {
+        "name": "minecraft:item.totem.use",
+        "type": "event"
+      }
+    ]
+  },
+  "phoenix.curveball.use": {
+    "subtitle": "subtitles.valorant.phoenix.curveball.use",
+    "sounds": [
+      "valorant:phoenix/curveball_use"
+    ]
+  },
+  "phoenix.curveball.explode": {
+    "subtitle": "subtitles.valorant.phoenix.curveball.explode",
+    "sounds": [
+      "valorant:phoenix/curveball_explode"
+    ]
+  },
+  "phoenix.hot_hands.use": {
+    "subtitle": "subtitles.valorant.phoenix.hot_hands.use",
+    "sounds": [
+      "valorant:phoenix/hot_hands_use"
+    ]
+  },
+  "phoenix.blaze.use": {
+    "subtitle": "subtitles.valorant.phoenix.blaze.use",
+    "sounds": [
+      "valorant:phoenix/blaze_use"
+    ]
+  },
+  "phoenix.blaze.loop": {
+    "subtitle": "subtitles.valorant.phoenix.blaze.loop",
+    "sounds": [
+      "valorant:phoenix/blaze_loop"
+    ]
+  },
+  "phoenix.blaze.end": {
+    "subtitle": "subtitles.valorant.phoenix.blaze.end",
+    "sounds": [
+      "valorant:phoenix/blaze_end"
+    ]
+  },
+  "phoenix.run_it_back.use": {
+    "subtitle": "subtitles.valorant.phoenix.run_it_back.use",
+    "sounds": [
+      "valorant:phoenix/run_it_back_use"
+    ]
+  },
+  "clove.ruse.use": {
+    "subtitle": "subtitles.valorant.clove.ruse.use",
+    "sounds": [
+      "valorant:clove/ruse_use"
+    ]
+  },
+  "clove.ruse.release": {
+    "subtitle": "subtitles.valorant.clove.ruse.release",
+    "sounds": [
+      "valorant:clove/ruse_release"
+    ]
+  },
+  "clove.meddle.use": {
+    "subtitle": "subtitles.valorant.clove.meddle.use",
+    "sounds": [
+      "valorant:clove/meddle_use"
+    ]
+  },
+  "clove.meddle.ready": {
+    "subtitle": "subtitles.valorant.clove.meddle.ready",
+    "sounds": [
+      "valorant:clove/meddle_ready"
+    ]
+  },
+  "clove.meddle.explode": {
+    "subtitle": "subtitles.valorant.clove.meddle.explode",
+    "sounds": [
+      "valorant:clove/meddle_explode"
+    ]
+  },
+  "clove.pick_me_up.use": {
+    "subtitle": "subtitles.valorant.clove.pick_me_up.use",
+    "sounds": [
+      "valorant:clove/pick_me_up_use"
+    ]
+  },
+  "clove.pick_me_up.proc": {
+    "subtitle": "subtitles.valorant.clove.pick_me_up.proc",
+    "sounds": [
+      "valorant:clove/pick_me_up_proc"
+    ]
+  },
+  "clove.not_dead_yet.use": {
+    "subtitle": "subtitles.valorant.clove.not_dead_yet.use",
+    "sounds": [
+      "valorant:clove/not_dead_yet_use"
+    ]
+  },
+  "jett.cloudburst.use": {
+    "subtitle": "subtitles.valorant.jett.cloudburst.use",
+    "sounds": [
+      "valorant:jett/cloudburst_use"
+    ]
+  },
+  "jett.updraft.use": {
+    "subtitle": "subtitles.valorant.jett.updraft.use",
+    "sounds": [
+      "valorant:jett/updraft_use"
+    ]
+  },
+  "jett.tailwind.ready": {
+    "subtitle": "subtitles.valorant.jett.tailwind.ready",
+    "sounds": [
+      "valorant:jett/tailwind_ready"
+    ]
+  },
+  "jett.tailwind.dash": {
+    "subtitle": "subtitles.valorant.jett.tailwind.dash",
+    "sounds": [
+      "valorant:jett/tailwind_dash"
+    ]
+  },
+  "jett.blade_storm.ready": {
+    "subtitle": "subtitles.valorant.jett.blade_storm.ready",
+    "sounds": [
+      "valorant:jett/blade_storm_ready"
+    ]
+  },
+  "jett.blade_storm.throw": {
+    "subtitle": "subtitles.valorant.jett.blade_storm.throw",
+    "sounds": [
+      "valorant:jett/blade_storm_throw_1",
+      "valorant:jett/blade_storm_throw_2",
+      "valorant:jett/blade_storm_throw_3"
+    ]
+  },
+  "jett.blade_storm.throw_all": {
+    "subtitle": "subtitles.valorant.jett.blade_storm.throw_all",
+    "sounds": [
+      "valorant:jett/blade_storm_throw_all"
+    ]
+  }
+}
