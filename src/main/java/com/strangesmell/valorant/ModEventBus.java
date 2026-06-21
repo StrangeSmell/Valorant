@@ -31,6 +31,7 @@ import static com.strangesmell.valorant.Valorant.TimePos;
 public class ModEventBus {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerDeath(LivingDeathEvent event) {
+        if(!Config.SAGE_RESURRECTION.get()) return;
         if (event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player) || !(player.level() instanceof ServerLevel level)) {
             return;
         }

@@ -94,6 +94,7 @@ public class Valorant {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, MODID);
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, MODID);
+    public static final DeferredItem<Item> VALORANT_ITEM = ITEMS.registerItem("valorant_item", Item::new);
     public static final DeferredItem<BombItem> LEIZHIBOMB_ITEM = ITEMS.registerItem("leizhibomb_item", BombItem::new);
     public static final DeferredItem<BigBombItem> BIGBOMB_ITEM = ITEMS.registerItem("bigbomb_item", BigBombItem::new);
     public static final DeferredItem<BoomBotItem> BOOMBOT_ITEM = ITEMS.registerItem("boombot_item", BoomBotItem::new);
@@ -312,7 +313,7 @@ public class Valorant {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.valorant"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> JETT_BLADE_STORM_ITEM.get().getDefaultInstance())
+            .icon(() -> VALORANT_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
