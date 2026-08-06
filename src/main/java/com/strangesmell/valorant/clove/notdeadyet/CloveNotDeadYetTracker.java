@@ -50,6 +50,13 @@ public final class CloveNotDeadYetTracker {
         serverLevel.sendParticles(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFFF66FF), player.getX(), player.getY() + 1.0D, player.getZ(), 80, 0.9D, 1.1D, 0.9D, 0.08D);
     }
 
+    public static void cancelFromDeathScreen(ServerPlayer player) {
+        PENDING.remove(player.getUUID());
+        if (player.level() instanceof ServerLevel serverLevel) {
+            player.kill(serverLevel);
+        }
+    }
+
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !(player.level() instanceof ServerLevel serverLevel)) {

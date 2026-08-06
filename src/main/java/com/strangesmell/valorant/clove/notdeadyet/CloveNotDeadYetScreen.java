@@ -18,6 +18,11 @@ public class CloveNotDeadYetScreen extends Screen {
             ValorantNetwork.sendToServer(CloveNotDeadYetPayload.INSTANCE);
             Minecraft.getInstance().setScreen(null);
         }).bounds(this.width / 2 - 100, this.height / 4 + 72, 200, 20).build());
+
+        this.addRenderableWidget(Button.builder(Component.translatable("screen.valorant.clove_not_dead_yet.cancel"), button -> {
+            ValorantNetwork.sendToServer(CloveNotDeadYetCancelPayload.INSTANCE);
+            Minecraft.getInstance().setScreen(null);
+        }).bounds(this.width / 2 - 100, this.height / 4 + 100, 200, 20).build());
     }
 
     @Override

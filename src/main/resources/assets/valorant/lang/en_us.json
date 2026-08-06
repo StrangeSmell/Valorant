@@ -1,4 +1,4 @@
-{
+﻿{
   "itemGroup.valorant": "Example Mod Tab",
   "block.valorant.example_block": "Example Block",
   "item.valorant.example_item": "Example Item",
@@ -24,7 +24,7 @@
   "item.valorant.jett_blade_storm_item": "Jett - Blade Storm",
   "screen.valorant.clove_not_dead_yet.title": "You died",
   "screen.valorant.clove_not_dead_yet.subtitle": "Use Not Dead Yet to return, then get a kill.",
-  "screen.valorant.clove_not_dead_yet.button": "Use Not Dead Yet",
+  "screen.valorant.clove_not_dead_yet.cancel": "Don`"t Use",`n  "screen.valorant.clove_not_dead_yet.button": "Use Not Dead Yet",
   "message.valorant.clove_not_dead_yet.death_only": "Use this from the death screen.",
   "message.valorant.sage_barrier_mode.default": "Barrier direction: sideways",
   "message.valorant.sage_barrier_mode.rotated": "Barrier direction: forward",
@@ -91,3 +91,4 @@
   "valorant.configuration.magicNumberIntroduction": "Magic Number Text",
   "valorant.configuration.magicNumber": "Magic Number"
 }
+

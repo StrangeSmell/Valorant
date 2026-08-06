@@ -20,6 +20,7 @@ import com.strangesmell.valorant.leizhi.boombot.BoomBotRenderer;
 import com.strangesmell.valorant.leizhi.blastpack.BlastPackRenderer;
 import com.strangesmell.valorant.jett.bladestorm.JettKnifeRenderer;
 import com.strangesmell.valorant.sage.resurrection.SageResurrectionRenderer;
+import com.strangesmell.valorant.skillbar.ValorantSkillBar;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -30,6 +31,7 @@ public class ValorantClientModEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
         Valorant.LOGGER.info("HELLO FROM CLIENT SETUP");
         Valorant.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        event.enqueueWork(ValorantSkillBar::refreshSkillItems);
     }
 
     @SubscribeEvent
@@ -80,7 +82,7 @@ public class ValorantClientModEvents {
         );
         event.register(PhoenixCurveballFlashPayload.TYPE, (IPayloadHandler<PhoenixCurveballFlashPayload>) (payload, context) ->
             context.enqueueWork(() ->
-                PhoenixCurveballFlashScreen.flash(payload.ticks())
+                PhoenixCurveballFlashScreen.flash(payload.ticks(), payload.flashX(), payload.flashY(), payload.flashZ())
             )
         );
     }

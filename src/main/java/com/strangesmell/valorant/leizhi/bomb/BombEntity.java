@@ -154,16 +154,25 @@ public class BombEntity extends ThrowableItemProjectile {
         }
         Direction direction = result.getDirection();
         Vec3 vec3 = this.getDeltaMovement();
-        BombEntity bomb = new BombEntity(level(), this.getX(), this.getY()+0.1, this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
+        BombEntity bomb = new BombEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack(Valorant.LEIZHIBOMB_ITEM.get()));
+
+        if(direction == Direction.DOWN){
+             bomb.setPos(this.getX(), this.getY()-0.1, this.getZ());
+
+        }else if(direction == Direction.UP){
+            bomb.setPos(this.getX(), this.getY()+0.1, this.getZ());
+        }
         bomb.setDis(this.getDis()+5);
         bomb.setHave(this.getHave());
         this.discard();
-        if(direction == Direction.UP || direction == Direction.DOWN){
+        if(direction == Direction.UP){
             bomb.setDeltaMovement(vec3.add(0, vec3.y * -1.3, 0));
         }else if (direction == Direction.EAST || direction == Direction.WEST){
             bomb.setDeltaMovement(vec3.add(vec3.x * -1.3, 0, 0));
         } else if (direction == Direction.NORTH || direction == Direction.SOUTH){
             bomb.setDeltaMovement(vec3.add(0, 0, vec3.z * -1.3));
+        } else if ( direction == Direction.DOWN){
+            bomb.setDeltaMovement(vec3.add(0, vec3.y * -1.3, 0));
         }
         level().addFreshEntity(bomb);
     }

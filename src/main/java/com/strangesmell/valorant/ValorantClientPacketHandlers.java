@@ -17,7 +17,7 @@ public final class ValorantClientPacketHandlers {
         CloveRuseScreen.openRuseScreen();
     }
 
-    public static void flashPhoenixCurveball(int ticks) {
-        PhoenixCurveballFlashScreen.flash(ticks);
+    public static void flashPhoenixCurveball(int ticks, double x, double y, double z) {
+        PhoenixCurveballFlashScreen.flash(ticks, x, y, z);
     }
 }

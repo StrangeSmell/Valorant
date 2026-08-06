@@ -1,10 +1,14 @@
 package com.strangesmell.valorant.skillbar;
 
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
-public record ValorantSkillUsePayload(Identifier itemId, Action action) implements net.minecraft.network.protocol.common.custom.CustomPacketPayload {
-    public static final net.minecraft.network.codec.StreamCodec<FriendlyByteBuf, ValorantSkillUsePayload> STREAM_CODEC = net.minecraft.network.codec.StreamCodec.of(
+public record ValorantSkillUsePayload(Identifier itemId, Action action) implements CustomPacketPayload {
+    public static final Type<ValorantSkillUsePayload> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Valorant.MODID, "skill_use"));
+    public static final StreamCodec<FriendlyByteBuf, ValorantSkillUsePayload> STREAM_CODEC = StreamCodec.of(
         (buffer, payload) -> {
             buffer.writeIdentifier(payload.itemId());
             buffer.writeEnum(payload.action());
@@ -12,10 +16,8 @@ public record ValorantSkillUsePayload(Identifier itemId, Action action) implemen
         buffer -> new ValorantSkillUsePayload(buffer.readIdentifier(), buffer.readEnum(Action.class))
     );
 
-        public static final net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<ValorantSkillUsePayload> TYPE = new net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath("valorant", "skill_use"));
-
     @Override
-    public net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<? extends net.minecraft.network.protocol.common.custom.CustomPacketPayload> type() {
+    public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 

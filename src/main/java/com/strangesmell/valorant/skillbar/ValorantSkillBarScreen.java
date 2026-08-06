@@ -1,9 +1,11 @@
 package com.strangesmell.valorant.skillbar;
 
+import com.strangesmell.valorant.Valorant;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
@@ -29,11 +31,10 @@ public class ValorantSkillBarScreen extends Screen {
 
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
         int left = (this.width - IMAGE_WIDTH) / 2;
         int top = (this.height - IMAGE_HEIGHT) / 2;
-        graphics.blit(CONTAINER, left, top, 0, 0, IMAGE_WIDTH, 35, 256, 256);
-        graphics.blit(CONTAINER, left, top + 35, 0, 126, IMAGE_WIDTH, 89, 256, 256);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER, left, top, 0, 0, IMAGE_WIDTH, 35, 256, 256);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER, left, top + 35, 0, 126, IMAGE_WIDTH, 89, 256, 256);
         graphics.text(this.font, this.title, left + 8, top + 6, 0x404040, false);
 
         for (int slot = 0; slot < ValorantSkillBar.SIZE; slot++) {
@@ -43,14 +44,18 @@ public class ValorantSkillBarScreen extends Screen {
             }
         }
 
-        Inventory inventory = this.minecraft.player.getInventory();
-        for (int slot = 9; slot < 36; slot++) {
-            int index = slot - 9;
-            renderInventoryStack(graphics, inventory.getItem(slot), left + INV_X + index % 9 * 18 + 1, top + INV_Y + index / 9 * 18 + 1);
+        if (this.minecraft != null && this.minecraft.player != null) {
+            Inventory inventory = this.minecraft.player.getInventory();
+            for (int slot = 9; slot < 36; slot++) {
+                int index = slot - 9;
+                renderInventoryStack(graphics, inventory.getItem(slot), left + INV_X + index % 9 * 18 + 1, top + INV_Y + index / 9 * 18 + 1);
+            }
+            for (int slot = 0; slot < 9; slot++) {
+                renderInventoryStack(graphics, inventory.getItem(slot), left + INV_X + slot * 18 + 1, top + INV_Y + 58 + 1);
+            }
         }
-        for (int slot = 0; slot < 9; slot++) {
-            renderInventoryStack(graphics, inventory.getItem(slot), left + INV_X + slot * 18 + 1, top + INV_Y + 58 + 1);
-        }
+
+        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
     }
 
     @Override
@@ -68,14 +73,16 @@ public class ValorantSkillBarScreen extends Screen {
             }
             ItemStack carried = findHoveredInventoryStack(mouseX, mouseY, left, top);
             if (ValorantSkillBar.isSkillItem(carried)) {
-                ValorantSkillBar.set(skillSlot, BuiltInRegistries.ITEM.getKey(carried.getItem()));
+                Identifier id = BuiltInRegistries.ITEM.getKey(carried.getItem());
+                ValorantSkillBar.set(skillSlot, id);
                 return true;
             }
         }
         ItemStack clickedStack = findHoveredInventoryStack(mouseX, mouseY, left, top);
         if (ValorantSkillBar.isSkillItem(clickedStack)) {
             int target = firstEmptySlot();
-            ValorantSkillBar.set(target >= 0 ? target : 0, BuiltInRegistries.ITEM.getKey(clickedStack.getItem()));
+            Identifier id = BuiltInRegistries.ITEM.getKey(clickedStack.getItem());
+            ValorantSkillBar.set(target >= 0 ? target : 0, id);
             return true;
         }
         return super.mouseClicked(event, isBeforePic);
@@ -86,7 +93,16 @@ public class ValorantSkillBarScreen extends Screen {
         return false;
     }
 
+    @Override
+    public void onClose() {
+        super.onClose();
+        ValorantSkillBar.refreshSkillItems();
+    }
+
     private ItemStack findHoveredInventoryStack(double mouseX, double mouseY, int left, int top) {
+        if (this.minecraft == null || this.minecraft.player == null) {
+            return ItemStack.EMPTY;
+        }
         Inventory inventory = this.minecraft.player.getInventory();
         int main = slotAt(mouseX, mouseY, left + INV_X, top + INV_Y, 27);
         if (main >= 0) {

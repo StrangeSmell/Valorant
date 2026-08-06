@@ -5,6 +5,7 @@ import com.strangesmell.valorant.clove.meddle.CloveMeddleItem;
 import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetItem;
 import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetOpenScreenPayload;
 import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetPayload;
+import com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetCancelPayload;
 import com.strangesmell.valorant.clove.pickmeup.ClovePickMeUpItem;
 import com.strangesmell.valorant.clove.ruse.CloveRuseItem;
 import com.strangesmell.valorant.clove.ruse.CloveRusePayload;
@@ -38,6 +39,8 @@ import com.strangesmell.valorant.sage.slow.SageSlowFieldEntity;
 import com.strangesmell.valorant.sage.slow.SageSlowItem;
 import com.strangesmell.valorant.sage.slow.SageSlowOrbEntity;
 import com.strangesmell.valorant.sage.resurrection.SageResurrectionItem;
+import com.strangesmell.valorant.skillbar.ValorantSkillUseHandler;
+import com.strangesmell.valorant.skillbar.ValorantSkillUsePayload;
 import com.strangesmell.valorant.phoenix.blaze.PhoenixBlazeItem;
 import com.strangesmell.valorant.phoenix.blaze.PhoenixBlazeWallEntity;
 import com.strangesmell.valorant.phoenix.curveball.PhoenixCurveballEntity;
@@ -341,6 +344,7 @@ public class Valorant {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(ValorantSkillUseHandler::refreshSkillItems);
     }
 
     private static Supplier<SoundEvent> registerSound(String path) {
@@ -363,6 +367,11 @@ public class Valorant {
                         com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetTracker.activateFromDeathScreen(player);
                     }
                 }))
+                .playToServer(CloveNotDeadYetCancelPayload.TYPE, CloveNotDeadYetCancelPayload.STREAM_CODEC, (payload, context) -> context.enqueueWork(() -> {
+                    if (context.player() instanceof ServerPlayer player) {
+                        com.strangesmell.valorant.clove.notdeadyet.CloveNotDeadYetTracker.cancelFromDeathScreen(player);
+                    }
+                }))
                 .playToServer(JettBladeStormPrimaryFirePayload.TYPE, JettBladeStormPrimaryFirePayload.STREAM_CODEC, (payload, context) -> context.enqueueWork(() -> {
                     if (context.player() instanceof ServerPlayer player && player.level() instanceof ServerLevel level && JettBladeStormTracker.isActive(player)) {
                         JettBladeStormTracker.primaryFire(level, player);
@@ -373,7 +382,12 @@ public class Valorant {
                         JettBladeStormTracker.secondaryFire(level, player);
                     }
                 }))
-                .playToClient(PhoenixCurveballFlashPayload.TYPE, PhoenixCurveballFlashPayload.STREAM_CODEC);
+                .playToClient(PhoenixCurveballFlashPayload.TYPE, PhoenixCurveballFlashPayload.STREAM_CODEC)
+                .playToServer(ValorantSkillUsePayload.TYPE, ValorantSkillUsePayload.STREAM_CODEC, (payload, context) -> context.enqueueWork(() -> {
+                    if (context.player() instanceof ServerPlayer player) {
+                        ValorantSkillUseHandler.use(player, payload.itemId(), payload.action());
+                    }
+                }));
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -409,3 +423,4 @@ public class Valorant {
         LOGGER.info("HELLO from server starting");
     }
 }
+
